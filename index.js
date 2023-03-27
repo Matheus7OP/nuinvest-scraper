@@ -49,8 +49,11 @@ const writeDataToFile = (investmentsRaw) => {
 
     for(investment of investments) {
         const content = new String(
-            investment.name + ", " + investment.currentValue + ", " + 
-            investment.investedCapital + ", " + investment.delta + '%'
+            investment.name + ", " +
+            investment.currentValue + ", " + 
+            investment.investedCapital + ", " +
+            (investment.currentValue - investment.investedCapital) + ", " +
+            investment.delta + '%'
         );
         fs.appendFileSync(filePath, content + '\n', err => {
             if(err) console.error(err);
